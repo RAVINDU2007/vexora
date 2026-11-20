@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VEXORA </title>
+<style>
+:root{--bg:#0a0a0a;--bg-soft:#111;--card:#141414;--line:rgba(255,255,255,.08);--text:#fff;--muted:rgba(255,255,255,.55);--green:#25D366;--ease:cubic-bezier(.22,1,.36,1);}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{background:var(--bg);color:var(--text);font-family:Arial,sans-serif;overflow-x:hidden}
+.marquee{overflow:hidden;background:#fff;color:#000;padding:9px 0;white-space:nowrap;font-size:11px;font-weight:700;letter-spacing:3px}
+.marquee-track{display:inline-block;animation:marquee 22s linear infinite}.marquee-track span{margin:0 28px}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+header{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 5vw;background:rgba(10,10,10,.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.logo{font-size:26px;font-weight:900;letter-spacing:6px;text-decoration:none;color:#fff}.logo em{font-style:normal;color:var(--green)}
+nav{display:flex;gap:34px}nav a{color:var(--muted);text-decoration:none;font-size:12px;font-weight:700;letter-spacing:2.5px}nav a:hover{color:#fff}
+.header-wa{display:flex;align-items:center;gap:8px;color:var(--green);text-decoration:none;font-size:12px;font-weight:700;border:1px solid rgba(37,211,102,.4);padding:8px 16px;border-radius:100px;white-space:nowrap}.header-wa:hover{background:var(--green);color:#000}
+.burger{display:none;background:none;border:none;color:#fff;font-size:24px;cursor:pointer}
+.hero{display:grid;grid-template-columns:1.05fr 1.1fr .55fr;align-items:center;gap:4vw;padding:5vh 5vw}
+.hero-left{animation:fadeUp 1s var(--ease) both}.hero-kicker{font-size:11px;font-weight:700;letter-spacing:5px;color:var(--muted);margin-bottom:22px}
+.hero h1{font-size:clamp(44px,6.2vw,96px);font-weight:900;line-height:.95}.hero h1 .stroke{color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.85)}.hero h1 .green{color:var(--green)}
+.hero-sub{margin:26px 0 40px;font-size:15px;color:var(--muted);max-width:440px;line-height:1.8}.hero-sub strong{color:#fff}
+.btn-row{display:flex;gap:16px;flex-wrap:wrap}.btn-shop{display:inline-flex;padding:17px 42px;background:#fff;color:#000;font-size:12px;font-weight:900;letter-spacing:3px;text-decoration:none;animation:glowShop 2.4s infinite}
+@keyframes glowShop{0%,100%{box-shadow:0 0 22px rgba(255,255,255,.28)}50%{box-shadow:0 0 44px rgba(255,255,255,.5)}}
+.btn-wa{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:17px 32px;background:var(--green);color:#000;font-size:12px;font-weight:900;letter-spacing:2px;text-decoration:none}.btn-wa:hover{transform:translateY(-3px)}
+.hero-center{animation:fadeUp 1.1s var(--ease) .15s both}.hero-center .frame{position:relative;overflow:hidden;aspect-ratio:4/5;background:var(--bg-soft);border:1px solid var(--line)}
+.hero-center img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s var(--ease),opacity .3s}.hero-center:hover img{transform:scale(1.06)}
+.hero-center .tag{position:absolute;top:16px;left:16px;background:var(--green);color:#000;font-size:10px;font-weight:900;letter-spacing:2px;padding:6px 12px;z-index:2}
+.hero-center .name{position:absolute;bottom:0;left:0;right:0;padding:20px;font-size:12px;font-weight:700;letter-spacing:3px;background:linear-gradient(transparent,rgba(0,0,0,.85))}
+.hero-thumbs{display:flex;flex-direction:column;gap:22px}.thumb{position:relative;overflow:hidden;aspect-ratio:3/4;background:var(--bg-soft);border:1px solid var(--line);cursor:pointer}.thumb img{width:100%;height:100%;object-fit:cover;filter:grayscale(.55) brightness(.75);transition:.4s}.thumb:hover img,.thumb.active img{filter:grayscale(0) brightness(1)}.thumb.active{border-color:var(--green)}.thumb span{position:absolute;bottom:10px;left:10px;font-size:10px;font-weight:700;letter-spacing:2px}
+section{padding:90px 5vw}.section-head{margin-bottom:56px}.section-head .kicker{font-size:11px;font-weight:700;letter-spacing:5px;color:var(--green);margin-bottom:14px}.section-head h2{font-size:clamp(34px,4.5vw,64px);font-weight:900;line-height:1}.section-head h2 .stroke{color:transparent;-webkit-text-stroke:1.2px rgba(255,255,255,.8)}
+.shop-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:28px}
+.card{background:var(--card);border:1px solid var(--line);overflow:hidden;transition:.4s;animation:fadeUp .9s var(--ease) both}.card:hover{transform:translateY(-8px);border-color:rgba(255,255,255,.25);box-shadow:0 30px 60px rgba(0,0,0,.6)}
+.card-img{overflow:hidden;aspect-ratio:4/5;background:#0d0d0d}.card-img img{width:100%;height:100%;object-fit:cover;transition:.8s}.card:hover .card-img img{transform:scale(1.12)}
+.card-body{padding:22px}.card-name{font-size:16px;font-weight:800;letter-spacing:1.5px;margin-bottom:6px}.card-price{font-size:15px;color:var(--green);font-weight:800;margin-bottom:14px}.card-cat{font-size:10px;letter-spacing:2px;color:var(--muted);margin-bottom:8px}
+.card .btn-wa{width:100%;padding:14px 10px;font-size:11px}
+.size-label{font-size:10px;font-weight:700;letter-spacing:2px;color:var(--muted);margin-bottom:8px}.size-row{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}.size-btn{flex:1;min-width:42px;padding:9px 0;background:#0a0a0a;color:#fff;border:1px solid var(--line);cursor:pointer;font-size:11px;font-weight:800}.size-btn.active{background:#fff;color:#000;transform:scale(1.05)}
+.why{background:var(--bg-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line);text-align:center}.why h2{font-size:clamp(36px,5vw,72px);font-weight:900;line-height:1.05;margin-bottom:64px}.why h2 .stroke{color:transparent;-webkit-text-stroke:1.3px rgba(255,255,255,.85)}.why h2 .green{color:var(--green)}
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px;text-align:left}.why-item{border:1px solid var(--line);padding:34px 28px;background:var(--bg)}.why-item .num{font-size:12px;font-weight:900;color:var(--green);margin-bottom:18px;display:block}.why-item h3{font-size:16px;font-weight:800;margin-bottom:10px}.why-item p{font-size:13px;color:var(--muted);line-height:1.7}
+footer{padding:70px 5vw 40px;text-align:center;border-top:1px solid var(--line)}footer .logo{font-size:34px;display:inline-block;margin-bottom:28px}.socials{display:flex;justify-content:center;gap:16px;margin-bottom:34px;flex-wrap:wrap}.socials a{display:inline-flex;gap:9px;color:var(--muted);text-decoration:none;font-size:12px;font-weight:700;border:1px solid var(--line);padding:12px 24px;border-radius:100px}.socials a:hover{color:#fff}.socials a.wa:hover{color:var(--green);border-color:var(--green)}footer .copy{color:rgba(255,255,255,.35);font-size:11px;letter-spacing:2.5px}
+@keyframes fadeUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:1024px){.hero{grid-template-columns:1fr 1fr;grid-template-areas:"left thumbs" "center center"}.hero-left{grid-area:left}.hero-center{grid-area:center;max-width:520px;margin:0 auto;width:100%}.hero-thumbs{grid-area:thumbs}}
+@media(max-width:768px){nav{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;background:#0a0a0a;padding:10px 0}nav.open{display:flex}nav a{padding:16px 5vw;border-top:1px solid var(--line)}.burger{display:block}.header-wa span{display:none}.hero{grid-template-columns:1fr;grid-template-areas:"left" "center" "thumbs";gap:34px;padding:5vh 6vw 60px}.hero-thumbs{flex-direction:row}.thumb{flex:1}section{padding:64px 6vw}.btn-shop,.btn-wa{width:100%}}
+</style>
+<base target="_blank">
+</head>
+<body>
+
+<div class="marquee"><div class="marquee-track" id="marqueeTrack"></div></div>
+
+<header>
+  <a class="logo" href="#home">VEXORA</a>
+  <nav id="mainNav"><a href="#home">HOME</a><a href="#shop">SHOP</a><a href="#collection">COLLECTION</a></nav>
+  <div style="display:flex;align-items:center;gap:14px">
+    <a class="header-wa" href="https://wa.me/94711680424" target="_blank">💬 <span>0711680424</span></a>
+    <button class="burger" id="burger">☰</button>
+  </div>
+</header>
+
+<section class="hero" id="home">
+  <div class="hero-left">
+    <div class="hero-kicker">NEW DROP — 2026 • VEXORA CLOTHING</div>
+    <h1>THE<br><span class="stroke">CLOTHING</span><br><span class="green">COLLECTION</span></h1>
+    <p class="hero-sub"><strong>WEAR DIFFERENT. BE VEXORA.</strong><br>Premium Clothing for Sri Lanka - T-Shirts, Shirts, Denim, Jackets, Hoodies & More. New Drop 2026.</p>
+    <div class="btn-row"><a class="btn-shop" href="#shop">SHOP NOW</a><a class="btn-wa" href="https://wa.me/94711680424?text=Hi%20VEXORA!%20I%20want%20to%20order%20from%20VEXORA%20Clothing" target="_blank">ORDER ON WHATSAPP</a></div>
+  </div>
+  <div class="hero-center"><div class="frame"><span class="tag">NEW DROP 2026</span><img id="mainImg" src="jacket1.jpg"><div class="name" id="mainName">VEXORA LOOK 01 — Rs.8500</div></div></div>
+  <div class="hero-thumbs">
+    <div class="thumb active" data-src="jacket1.jpg" data-name="VEXORA LOOK 01 — Rs.8500"><img src="jacket1.jpg"><span>LOOK 01</span></div>
+    <div class="thumb" data-src="jacket2.jpg" data-name="VEXORA LOOK 02 — Rs.7900"><img src="jacket2.jpg"><span>LOOK 02</span></div>
+    <div class="thumb" data-src="jacket3.jpg" data-name="VEXORA LOOK 03 — Rs.9200"><img src="jacket3.jpg"><span>LOOK 03</span></div>
+  </div>
+</section>
+
+<section id="shop">
+  <div class="section-head"><div class="kicker">SHOP THE DROP</div><h2> CLOTHING <span class="stroke"></span></h2><p style="color:var(--muted);margin-top:12px;font-size:13px"> Size එක තෝරලා ORDER ON WHATSAPP ඔබන්න.</p></div>
+  <div class="shop-grid" id="shopGrid"></div>
+</section>
+
+<section class="why" id="collection">
+  <h2><span class="stroke">WEAR DIFFERENT.</span><br><span class="green">BE VEXORA.</span></h2>
+  <div class="why-grid">
+    <div class="why-item"><span class="num">01</span><h3>PREMIUM QUALITY</h3><p>Best fabric, best stitching. Worn for years, not for weeks.</p></div>
+    <div class="why-item"><span class="num">02</span><h3>ISLAND WIDE DELIVERY</h3><p>Colombo to Jaffna - Free island wide delivery.</p></div>
+    <div class="why-item"><span class="num">03</span><h3>CASH ON DELIVERY</h3><p>Pay in cash when your order arrives.</p></div>
+    <div class="why-item"><span class="num">04</span><h3>EASY SIZE EXCHANGE</h3><p>Wrong size? WhatsApp us, we swap it fast.</p></div>
+  </div>
+</section>
+
+<footer>
+  <a class="logo" href="#home">VEX<em>O</em>RA</a>
+  <div class="socials"><a href="https://www.tiktok.com/@vexora_clothing" target="_blank">🎵 @vexora_clothing</a><a class="wa" href="https://wa.me/94711680424" target="_blank">💬 0711680424</a></div>
+  <p class="copy">© 2026 Ravindu-0740030023 </p>
+</footer>
+
+<script>
+(function(){const msg="VEXORA • NEW DROP • CLOTHING 2026 • FREE ISLAND WIDE DELIVERY • ";const t=document.getElementById("marqueeTrack");t.innerHTML="<span>"+(msg+msg+msg+msg).replace(/ • /g," • </span><span>")+"</span>";})();
+
+/* 👇 jacket1 ඉදන් jacket20 වෙනකන් - 50 ITEMS */
+const PRODUCTS = [
+  { name:"VEXORA Look 01", cat:"JACKET", price:"Rs.8500", img:"jacket1.jpg" },
+  { name:"VEXORA Look 02", cat:"JACKET", price:"Rs.7900", img:"jacket2.jpg" },
+  { name:"VEXORA Look 03", cat:"JACKET", price:"Rs.9200", img:"jacket3.jpg" },
+  { name:"VEXORA Look 04", cat:"T-SHIRT", price:"Rs.3500", img:"jacket4.jpg" },
+  { name:"VEXORA Look 05", cat:"T-SHIRT", price:"Rs.3800", img:"jacket5.jpg" },
+  { name:"VEXORA Look 06", cat:"SHIRT", price:"Rs.5500", img:"jacket6.jpg" },
+  { name:"VEXORA Look 07", cat:"SHIRT", price:"Rs.5900", img:"jacket7.jpg" },
+  { name:"VEXORA Look 08", cat:"DENIM", price:"Rs.8900", img:"jacket8.jpg" },
+  { name:"VEXORA Look 09", cat:"DENIM", price:"Rs.9500", img:"jacket9.jpg" },
+  { name:"VEXORA Look 10", cat:"HOODIE", price:"Rs.7500", img:"jacket10.jpg" },
+  { name:"VEXORA Look 11", cat:"HOODIE", price:"Rs.7800", img:"jacket11.jpg" },
+  { name:"VEXORA Look 12", cat:"JACKET", price:"Rs.9800", img:"jacket12.jpg" },
+  { name:"VEXORA Look 13", cat:"T-SHIRT", price:"Rs.3200", img:"jacket13.jpg" },
+  { name:"VEXORA Look 14", cat:"T-SHIRT", price:"Rs.3600", img:"jacket14.jpg" },
+  { name:"VEXORA Look 15", cat:"SHIRT", price:"Rs.5200", img:"jacket15.jpg" },
+  { name:"VEXORA Look 16", cat:"PANT", price:"Rs.6800", img:"jacket16.jpg" },
+  { name:"VEXORA Look 17", cat:"PANT", price:"Rs.7200", img:"jacket17.jpg" },
+  { name:"VEXORA Look 18", cat:"JACKET", price:"Rs.10500", img:"jacket18.jpg" },
+  { name:"VEXORA Look 19", cat:"HOODIE", price:"Rs.8200", img:"jacket19.jpg" },
+  { name:"VEXORA Look 20", cat:"PREMIUM", price:"Rs.11500", img:"jacket20.jpg" },
+   { name:"VEXORA Look 21", cat:"PREMIUM", price:"Rs.11500", img:"jacket20.jpg" },
+];
+const WA = "https://wa.me/94711680424";
+const SIZES = ["S","M","L","XL","XXL"];
+
+(function(){
+  const grid = document.getElementById("shopGrid");
+  grid.innerHTML = PRODUCTS.map(function(p,i){
+    const sizeBtns = SIZES.map(function(s){ return '<button class="size-btn'+(s==="L"?" active":"")+'" data-size="'+s+'" onclick="selectSize(this,'+i+')">'+s+'</button>'; }).join("");
+    const link = WA + "?text=" + encodeURIComponent("Hi VEXORA! I want to order " + p.name + " - " + p.price + " - Size L");
+    return '<div class="card"><div class="card-img"><img src="'+p.img+'" alt="'+p.name+'" loading="lazy" onerror="this.src=\'jacket1.jpg\'"></div><div class="card-body"><div class="card-cat">'+p.cat+'</div><div class="card-name">'+p.name.toUpperCase()+'</div><div class="card-price">'+p.price+'</div><div class="size-label">SELECT SIZE:</div><div class="size-row">'+sizeBtns+'</div><a class="btn-wa" id="orderBtn'+i+'" href="'+link+'" target="_blank">ORDER ON WHATSAPP - L</a></div></div>';
+  }).join("");
+})();
+
+function selectSize(btn,index){
+  const card=btn.closest(".card");
+  card.querySelectorAll(".size-btn").forEach(function(b){b.classList.remove("active")});
+  btn.classList.add("active");
+  const size=btn.dataset.size; const p=PRODUCTS[index];
+  const ob=document.getElementById("orderBtn"+index);
+  ob.href=WA+"?text="+encodeURIComponent("Hi VEXORA! I want to order "+p.name+" - "+p.price+" - Size "+size);
+  ob.textContent="ORDER ON WHATSAPP - "+size;
+}
+(function(){
+  const mainImg=document.getElementById("mainImg"), mainName=document.getElementById("mainName");
+  document.querySelectorAll(".thumb").forEach(function(t){ t.addEventListener("click",function(){ document.querySelectorAll(".thumb").forEach(function(x){x.classList.remove("active")}); t.classList.add("active"); mainImg.style.opacity="0"; setTimeout(function(){ mainImg.src=t.dataset.src; mainName.textContent=t.dataset.name; setTimeout(function(){mainImg.style.opacity="1"},200); },180); }); });
+})();
+(function(){ const b=document.getElementById("burger"), n=document.getElementById("mainNav"); b.addEventListener("click",function(){n.classList.toggle("open")}); n.querySelectorAll("a").forEach(function(a){a.addEventListener("click",function(){n.classList.remove("open")})}); })();
+</script>
+</body>
+</html>

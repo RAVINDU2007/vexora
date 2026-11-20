@@ -1,0 +1,38 @@
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.menu {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 30px;
+   
+}
+.menu a {
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+    margin-left: 25px;
+}
+   
+body{
+    background-color: beige;
+}
+hr {
+    margin-top: 2px;
+    height: 10px;
+    color: black
+    ;
+
+}
